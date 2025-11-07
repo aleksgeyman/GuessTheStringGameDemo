@@ -20,7 +20,7 @@ struct GameView: View {
     }
     
     private var timerView: some View {
-        EmptyView()
+        Text("\(viewModel.remainingTime) seconds remaining")
     }
     
     private var letterBoxesView: some View {
