@@ -20,14 +20,21 @@ struct GameView: View {
     }
     
     private var timerView: some View {
-        
+        EmptyView()
     }
     
     private var letterBoxesView: some View {
-        
+        HStack(spacing: 8) {
+            ForEach($viewModel.userInput) { userInput in
+                LetterBox(input: userInput.input, state: userInput.state)
+            }
+        }
     }
     
     private var buttonView: some View {
-        
+        Button("Check") {
+            viewModel.checkPositions()
+        }
+        .buttonStyle(.borderedProminent)
     }
 }
