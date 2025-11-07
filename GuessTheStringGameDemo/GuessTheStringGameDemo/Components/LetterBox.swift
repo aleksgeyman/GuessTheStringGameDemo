@@ -24,8 +24,9 @@ struct LetterBox: View {
             }
         }
     }
+    
     @Binding var input: String
-    @Binding var state: State
+    let state: State
     
     var body: some View {
         TextField("", text: $input)
@@ -45,9 +46,9 @@ struct LetterBox: View {
 
 #Preview {
     HStack(spacing: 16) {
-        LetterBox(input: .constant("A"), state: Binding.constant(.initial))
-        LetterBox(input: .constant("A"), state: Binding.constant(.match))
-        LetterBox(input: .constant("A"), state: Binding.constant(.contain))
-        LetterBox(input: .constant("A"), state: Binding.constant(.miss))
+        LetterBox(input: .constant("A"), state: .initial)
+        LetterBox(input: .constant("A"), state: .match)
+        LetterBox(input: .constant("A"), state: .contain)
+        LetterBox(input: .constant("A"), state: .miss)
     }
 }

@@ -37,7 +37,7 @@ struct GameView: View {
     private var letterBoxesView: some View {
         HStack(spacing: 8) {
             ForEach($viewModel.userInput) { userInput in
-                LetterBox(input: userInput.input, state: userInput.state)
+                LetterBox(input: userInput.input, state: userInput.state.wrappedValue)
             }
         }
     }
