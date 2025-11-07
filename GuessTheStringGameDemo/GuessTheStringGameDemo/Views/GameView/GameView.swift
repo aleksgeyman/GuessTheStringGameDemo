@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     @StateObject var viewModel: GameViewModel
+    @State private var shouldShowResultScreen: Bool = false
     
     var body: some View {
         VStack(spacing: 16) {
@@ -17,6 +18,16 @@ struct GameView: View {
             buttonView
         }
         .padding()
+        .onChange(of: viewModel.gameState) { _, newValue in
+            if case .end = newValue {
+                shouldShowResultScreen = true
+            }
+        }
+        .fullScreenCover(isPresented: $shouldShowResultScreen) {
+            ResultView(text: viewModel.resultViewText) {
+                viewModel.restart()
+            }
+        }
     }
     
     private var timerView: some View {
